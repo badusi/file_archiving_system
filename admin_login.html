@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Past Questions Archive</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-login">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Admin Portal</h1>
+                <p>Past Questions Archive System</p>
+            </div>
+            
+            <form id="adminLoginForm" action="php/admin_login.php" method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="admin@school.edu">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Login to Admin</button>
+            </form>
+            
+<!--             
+            <?php if (isset($_SESSION['error'])): ?>
+            <div class="alert alert-error">
+                <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+            </div>
+            <?php endif; ?> -->
+            
+            <!-- <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success">
+                <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
+            </div>
+            <?php endif; ?> -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                e.preventDefault();
+                alert('Please fill in all fields');
+                return false;
+            }
+            
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('Please enter a valid email address');
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
